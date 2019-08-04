@@ -1,26 +1,21 @@
-
 """
 function can also decorate a class.
-this script shows how function decorates a class.
+this script shows how the function looks like.
 """
 
-def greeting(self, nama): # since this is a method so it takes self as argument
+# we make this function to act like a method so it takes self as argument.
+def greeting(self, name):
     print(self)
-    print("Hello " + nama + ", selamat pagi.")
+    print("Hello " + name + ", selamat pagi.")
 
-def augmentclass(cls):
-  """
-  this function is decorator.
-  """
+# this function is decorator. it takes a class as input parameter.
+# the class is decorated class.
+def augmentclass(my_class):
+  my_class.greeting = greeting # assign new attribute to the decorated class.
+  return my_class
 
-  cls.greeting = greeting
-  return cls
-
-@augmentclass
-class Philo:
-    """
-    this class is decorated by function.
-    """
+@augmentclass # decorator
+class Philo: # decorated class
     pass
 
 class Talo:

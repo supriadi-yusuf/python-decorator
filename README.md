@@ -1,6 +1,9 @@
 Decorator can be function or class.
 Decorator is function or class that decorates another function or class.
+Decorator is called / instantiated when decorated function / class is defined.
+
 Symbol @ is to indicate decorator.
+
 Kinds of decorator :
 1. function decorates another function
 2. function decorates class

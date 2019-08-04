@@ -1,27 +1,37 @@
-def greeting(self, nama): # since this is a method so it takes self as argument
+"""
+function that decorates a class can also takes parameter.
+this script shows how the function decorator looks like.
+"""
+
+# we make this function to act like a method so it takes self as argument.
+def greeting(self, nama):
     print(self)
     print("Hello " + nama + ", selamat pagi.")
 
+# this function is decorator. it takes parameter.
+# the parameter here is decorator parameter.
 def augmentclass(greeting_required):
 
-  def class_wrapper(cls):
+  # this function takes parameter.
+  # the parameter here is a class to be decorated.
+  def get_decorated_class(my_class):
     if greeting_required:
-      cls.greeting = greeting
+      my_class.greeting = greeting
 
-    return cls
+    return my_class
 
-  return class_wrapper
+  return get_decorated_class
 
-@augmentclass(True)
-class Philo:
+@augmentclass(True) # decorator taking parameter
+class Philo: # decorated class
   pass
 
-@augmentclass(False)
-class Talo:
+@augmentclass(False) # decorator taking parameter
+class Talo: # decorated class
   pass
 
 p = Philo()
 t = Talo()
 
 p.greeting("supriadi")
-t.greeting("juju")
+t.greeting("juju")  # this should be error ( exception is raised )

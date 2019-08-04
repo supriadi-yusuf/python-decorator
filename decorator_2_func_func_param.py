@@ -4,23 +4,27 @@ this script shows how function decorator that takes parameter looks like.
 this script also shows how to pass paramater into decorator.
 """
 
-def deco(prm1,prm2):
-  """
-  this is function decorator that takes parameter.
-  """
+# this is function decorator.
+# parameters we define here are parameters for decorator.
+def deco( param1, param2):
 
-  def func_arg(func):
-    def func_wrapper(*args, **kwargs):
-      print('from func wrapper')
-      print('param1 : %s, param2 : %s' % (prm1,prm2))
-      return func(*args, **kwargs)
+  # this function takes another function as input parameter.
+  # the paramater here is decorated function.
+  def get_decorated_function(my_function):
 
-    return func_wrapper
+    # this function is executed when decorated function is called
+    # so parameters here must be same as parameters in the decorated function.
+    def my_function_wrapper(*args, **kwargs):
+      print('from function wrapper')
+      print('param1 : %s, param2 : %s' % ( param1, param2))
+      return my_function(*args, **kwargs)
 
-  return func_arg
+    return my_function_wrapper
 
-@deco(10,100)
-def multiply(a,b):
+  return get_decorated_function
+
+@deco(10,100) # decorator taking parameters
+def multiply(a,b): # decorated function
   print(" %d x %d = %d " % ( a, b, a*b))
   return a * b
 
